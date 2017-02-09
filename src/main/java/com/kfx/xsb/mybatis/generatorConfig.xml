@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+  PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+  "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+ 
+	<classPathEntry location="E:\workspace\lengyan_git\mybatis_generator\mysql-connector-java-5.1.30.jar" />
+    
+	<context id="MysqlTables" targetRuntime="MyBatis3">
+		<plugin type="com.kfx.xsb.mybatis.RenameMybatorPlugin">
+            <property name="searchString" value="Example$" />
+            <property name="replaceString" value="Criteria" />
+        </plugin>
+		
+		<commentGenerator type="com.kfx.xsb.mybatis.DefaultCommentGenerator">
+		</commentGenerator>
+		
+		<jdbcConnection driverClass="com.mysql.jdbc.Driver"
+            connectionURL="jdbc:mysql://127.0.0.1:3306/ly_secret?createDatabaseIfNotExist=true&amp;useUnicode=true&amp;characterEncoding=utf-8" 
+            userId="root"
+            password="1234567890">
+        </jdbcConnection>
+        
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false" />
+        </javaTypeResolver>
+        
+	
+		<!-- 生成命名空间相关 -->
+       	<javaModelGenerator targetPackage="org.lengyan.secret.common.po.manage.account"
+			targetProject="src\main\java">
+			<property name="enableSubPackages" value="true" />
+			<property name="trimStrings" value="true" />
+			<!--  <property name="rootClass" value="com.services.vshowserver.model.BaseModel"/>-->
+		</javaModelGenerator>
+
+
+		<sqlMapGenerator targetPackage="org.lengyan.secret.dao.orm.manage.account"
+			targetProject="src\main\java">
+			<property name="enableSubPackages" value="true" />
+		</sqlMapGenerator>
+
+		<javaClientGenerator type="XMLMAPPER" targetPackage="org.lengyan.secret.dao.orm.manage.account"
+			targetProject="src\main\java">
+			<property name="enableSubPackages" value="true"/>
+		</javaClientGenerator>
+		
+	  
+        
+          <table schema="t_sys_user" tableName="t_sys_user" domainObjectName="SystemUser" enableCountByExample="false" 
+         	enableDeleteByExample="false" enableSelectByExample="false" enableUpdateByExample="false" >
+         	<property name="useActualColumnNames" value="true" />
+         </table>
+	</context>
+</generatorConfiguration>
